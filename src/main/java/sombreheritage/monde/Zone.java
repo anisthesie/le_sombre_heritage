@@ -11,14 +11,39 @@ public abstract class Zone {
     private String image;
     private String nom;
 
+    protected boolean dejaVisite;
+
     public Zone(Jeu jeu, String image, String nom, Fragment fragment) {
         this.jeu = jeu;
         this.image = image;
         this.nom = nom;
         this.fragment = fragment;
+        this.dejaVisite = false;
     }
 
     public abstract void traiterCommande(String commande);
+
+    public void entrer() {
+        getJeu().afficher("");
+        if (!dejaVisite())
+            getJeu().afficher("   Vous venez de découvrir un nouvel endroit.");
+        getJeu().afficher("Vous êtes maintenant dans: " + nom + ".");
+        getJeu().afficher("");
+
+        dejaVisite = true;
+    }
+
+    public boolean dejaVisite() {
+        return dejaVisite;
+    }
+
+    public void removeFragment() {
+        this.fragment = null;
+    }
+
+    public boolean hasFragment() {
+        return fragment != null;
+    }
 
     public Fragment getFragment() {
         return fragment;

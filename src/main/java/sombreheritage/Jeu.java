@@ -18,17 +18,16 @@ public class Jeu {
     public Jeu(Gui gui) {
 
         initialiserZones();
-        this.zoneCourante = getZoneParType(GrotteSouterraine.class);
 
         this.gui = gui;
         gui.setJeu(this);
         gui.afficher();
-        gui.afficheImage(zoneCourante.getCheminImage());
+
+        this.entrerZone(getZone(GrotteSouterraine.class));
     }
 
     public void traiterCommande(String entree) {
-        String commande = entree.toUpperCase().replace(" ", "");
-        gui.afficher("vous avez écrit : " + commande);
+        if (zoneCourante != null) zoneCourante.traiterCommande(entree);
     }
 
     private void initialiserZones() {
@@ -46,12 +45,11 @@ public class Jeu {
     }
 
     public void entrerZone(Zone zone) {
-        if (zone == null) return;
+        if (zone == null || zone == this.zoneCourante) return;
 
         setZoneCourante(zone);
+        zone.entrer();
         gui.afficheImage(zone.getCheminImage());
-        gui.afficher("Vous entrez dans " + zone.getNom() + ".");
-
     }
 
     public Zone getZoneCourante() {
@@ -70,7 +68,7 @@ public class Jeu {
         return zones;
     }
 
-    public <T extends Zone> T getZoneParType(Class<T> type) {
+    public <T extends Zone> T getZone(Class<T> type) {
         for (Zone zone : zones) {
             if (type.isInstance(zone))
                 return type.cast(zone);

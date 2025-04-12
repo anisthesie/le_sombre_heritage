@@ -6,6 +6,9 @@ import sombreheritage.monde.Zone;
 
 public class GrotteSouterraine extends Zone {
 
+    private boolean explored = false;
+
+    private int etapeConversation = 0;
 
     public GrotteSouterraine(Jeu jeu) {
         super(jeu, "grotte_souterraine", "Grotte Souterraine",
@@ -13,7 +16,78 @@ public class GrotteSouterraine extends Zone {
     }
 
     @Override
-    public void traiterCommande(String commande) {
+    public void entrer() {
 
+        if (!dejaVisite()) {
+            getJeu().afficher("Vous reprenez conscience dans un boyau rocheux, suintant d’humidité.");
+            getJeu().afficher("De faibles gouttes tombent du plafond, et une lueur vacillante provient d’un minuscule interstice dans la paroi.");
+            getJeu().afficher("Vos premières sensations : froid, confusion, solitude. ");
+            getJeu().afficher("Votre mémoire est comme un livre aux pages vierges.");
+            getJeu().afficher("");
+        }
+        getJeu().afficher("Vous êtes maintenant dans: " + getNom() + ".");
+        getJeu().afficher("Les choix qui s’offrent à vous sont : ");
+        getJeu().afficher("     1) Explorer la grotte");
+        getJeu().afficher("     2) Vous enfuir précipitamment pour rejoindre la prochaine zone.");
+        getJeu().afficher("Taper le numero de la commande souhaitée. (1 ou 2) : ");
+        getJeu().afficher("");
+
+        this.dejaVisite = true;
+    }
+
+    @Override
+    public void traiterCommande(String commande) {
+        switch (etapeConversation) {
+            case 0:
+                premiereEtape(commande);
+                break;
+            case 1:
+                deuxiemeEtape(commande);
+                break;
+        }
+    }
+
+    private void premiereEtape(String commande) {
+        switch (commande) {
+            case "1":
+                if (explored)
+                    getJeu().afficher("Vous avez déjà exploré la grotte.");
+                else {
+                    getJeu().afficher("Vous avez choisi d'explorer la grotte.");
+                    getJeu().afficher("");
+                    getJeu().afficher("En explorant la grotte, entendez un écho fantomatique.");
+                    getJeu().afficher("La voix murmure : 'Enfin réveillé... Te souviens-tu de ton nom ?'");
+                    getJeu().afficher("Deux choix s'offrent à vous :");
+                    getJeu().afficher("     1) Avouer que vous avez oublié votre nom.");
+                    getJeu().afficher("     2) Ignorer la voix.");
+                    getJeu().afficher("Taper le numero de la commande souhaitée. (1 ou 2) : ");
+
+                    etapeConversation = 1;
+                    explored = true;
+                }
+                break;
+            case "2":
+                break;
+            default:
+                getJeu().afficher("Commande invalide! Veuillez entrer 1 ou 2 : ");
+                break;
+        }
+    }
+
+    private void deuxiemeEtape(String commande) {
+        switch (commande) {
+            case "1":
+                getJeu().afficher("Vous avez choisi d'avouer que vous avez oublié votre nom.");
+                getJeu().afficher("La voix murmure : 'Suit-moi, j'ai quelque chose à te montrer.'");
+                getJeu().afficher("Vous avez trouvé un fragment de mémoire.");
+                break;
+            case "2":
+                getJeu().afficher("Vous avez choisi d'ignorer la voix.");
+                getJeu().afficher("Vous continuez votre chemin, cherchant une issue vers la prochaine zone.");
+                break;
+            default:
+                getJeu().afficher("Commande invalide! Veuillez entrer 1 ou 2 : ");
+                break;
+        }
     }
 }
