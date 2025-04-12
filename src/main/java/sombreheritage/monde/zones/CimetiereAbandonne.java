@@ -1,4 +1,17 @@
-package sombreheritage.zones;
+package sombreheritage.monde.zones;
 
-public class CimetiereAbandonne {
+import sombreheritage.Jeu;
+import sombreheritage.monde.Fragment;
+import sombreheritage.monde.Zone;
+
+public class CimetiereAbandonne extends Zone {
+    public CimetiereAbandonne(Jeu jeu) {
+        super(jeu, "cimetiere_abandonne", "Cimetière Abandonné",
+                Fragment.LIGNEE_HERITAGE);
+    }
+
+    @Override
+    public void traiterCommande(String commande) {
+
+    }
 }
