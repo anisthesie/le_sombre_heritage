@@ -48,6 +48,7 @@ public class Gui implements ActionListener {
         fenetre = new JFrame("Jeu");
 
         entree = new JTextField(34);
+        entree.setToolTipText("Entrez vos commandes ici");
 
         texte = new JTextArea();
         texte.setEditable(false);
@@ -59,7 +60,7 @@ public class Gui implements ActionListener {
         image = new JLabel();
 
         panel.setLayout(new BorderLayout());
-        panel.add(image, BorderLayout.NORTH);
+        panel.add(image, BorderLayout.EAST);
         panel.add(listScroller, BorderLayout.CENTER);
         panel.add(entree, BorderLayout.SOUTH);
 
