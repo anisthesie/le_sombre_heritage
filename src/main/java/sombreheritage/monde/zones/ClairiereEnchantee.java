@@ -28,7 +28,7 @@ public class ClairiereEnchantee extends Zone {
         getJeu().afficher("Les choix qui s’offrent à vous sont : ");
         getJeu().afficher("     1) Répondre gentiment et montrer le pendentif brisé de la grotte.");
         getJeu().afficher("     2) Repousser l'esprit.");
-        getJeu().afficher("Taper le numero de la commande souhaitée. (1 ou 2) : ");
+        getJeu().afficher("Taper le numéro de la commande souhaitée. (1 ou 2) : ");
         getJeu().afficher("");
 
         this.dejaVisite = true;
@@ -43,6 +43,9 @@ public class ClairiereEnchantee extends Zone {
                 break;
             case 1:
                 choixFontaine(commande);
+                break;
+            case 2:
+                choixChemin(commande);
                 break;
         }
 
@@ -64,7 +67,7 @@ public class ClairiereEnchantee extends Zone {
                 break;
             case "2":
                 getJeu().afficher("Vous repoussez l'esprit.");
-                getJeu().afficher("L'esprit s'éloigne, déçu, et disparaît dans la brume.");
+                getJeu().afficher("L'esprit s'éloigne, déçu, disparaît dans la brume.");
                 getJeu().afficher("");
                 break;
             default:
@@ -85,7 +88,7 @@ public class ClairiereEnchantee extends Zone {
         switch (commande) {
             case "1":
                 if (apprisRituel) {
-                    getJeu().afficher("Avant de boire, vous rappelez les paroles du rituel.");
+                    getJeu().afficher("Avant de boire, vous récitez les paroles du rituel.");
                     getJeu().afficher("Vous buvez l'eau de la fontaine.");
                     getJeu().afficher("L’eau est douce et apaisante, vous ressentez une énergie nouvelle.");
                     getJeu().afficher("Près de la fontaine, une petite pierre en forme de feuille repose, baignant dans un halo de lumière.");
@@ -98,8 +101,7 @@ public class ClairiereEnchantee extends Zone {
                 } else {
                     getJeu().afficher("Vous buvez l'eau de la fontaine.");
                     getJeu().afficher("L’eau est douce et apaisante, mais rien ne se passe sans le récit d'un certain rituel.");
-                    etapeConversation = 0;
-                    return;
+                    break;
                 }
                 break;
             case "2":
@@ -109,7 +111,37 @@ public class ClairiereEnchantee extends Zone {
                 getJeu().afficher("Commande invalide. Veuillez entrer 1 ou 2.");
                 return;
         }
+
+        getJeu().afficher("Vous vous éloignez enfin de la fontaine et continuez votre chemin.");
+        getJeu().afficher("Vous arrivez à un croisement dans la forêt.");
+        getJeu().afficher("Deux chemins s'offrent à vous :");
+        getJeu().afficher("     1) Un sentier menant à la Forêt Maudite.");
+        getJeu().afficher("     2) Un chemin longeant une arche de lierre, qui mène au Cimetière Abandonné.");
+        getJeu().afficher("     3) Retourner à la grotte.");
+        getJeu().afficher("Taper le numero de la commande souhaitée. (1, 2 ou 3) : ");
+        getJeu().afficher("");
         etapeConversation = 2;
-        // Sorties de la clairière
+    }
+
+    private void choixChemin(String commande) {
+        switch (commande) {
+            case "1":
+                getJeu().afficher("Vous décidez de prendre le sentier menant à la Forêt Maudite.");
+                getJeu().afficher("");
+                getJeu().entrerZone(ForetMaudite.class);
+                break;
+            case "2":
+                getJeu().afficher("Vous choisissez de suivre le chemin longeant l'arche de lierre.");
+                getJeu().afficher("");
+                getJeu().entrerZone(CimetiereAbandonne.class);
+                break;
+            case "3":
+                getJeu().afficher("Vous retournez à la grotte.");
+                getJeu().afficher("");
+                getJeu().entrerZone(GrotteSouterraine.class);
+                break;
+            default:
+                getJeu().afficher("Commande invalide. Veuillez entrer 1, 2 ou 3.");
+        }
     }
 }
