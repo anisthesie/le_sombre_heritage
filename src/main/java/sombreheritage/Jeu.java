@@ -52,6 +52,10 @@ public class Jeu {
 
     }
 
+    public boolean possedeFragment(Fragment fragment) {
+        return fragments.contains(fragment);
+    }
+
     public void ajouterFragment(Fragment fragment) {
         if (fragment == null) return;
         fragments.add(fragment);
