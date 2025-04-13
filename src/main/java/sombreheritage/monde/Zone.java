@@ -13,6 +13,8 @@ public abstract class Zone {
 
     protected boolean dejaVisite;
 
+    protected int etapeConversation = 0;
+
     public Zone(Jeu jeu, String image, String nom, Fragment fragment) {
         this.jeu = jeu;
         this.image = image;

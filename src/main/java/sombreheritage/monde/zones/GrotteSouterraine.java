@@ -8,8 +8,6 @@ public class GrotteSouterraine extends Zone {
 
     private boolean explored = false;
 
-    private int etapeConversation = 0;
-
     public GrotteSouterraine(Jeu jeu) {
         super(jeu, "grotte_souterraine", "Grotte Souterraine",
                 Fragment.NAISSANCE);
