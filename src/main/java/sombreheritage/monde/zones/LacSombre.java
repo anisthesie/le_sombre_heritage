@@ -43,10 +43,22 @@ public class LacSombre extends Zone {
             case 1:
                 choixSacrifice(commande);
                 break;
+            case 2:
+                choixSortie(commande);
+                break;
         }
     }
 
     private void trouverFragment() {
+
+        getJeu().afficher("Un médaillon en argent gît dans une barque engloutie ou à demi coulée.");
+        getJeu().afficher("Le contact ravive le souvenir d’un pacte aquatique : ");
+        getJeu().afficher("Votre ancêtre a offert quelque chose de précieux (du sang, un talisman) à une créature lacustre pour conjurer une grande sécheresse, mais ce sacrifice l’a lié à la malédiction.");
+        getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
+        getJeu().afficher("");
+
+        removeFragment();
+        getJeu().ajouterFragment(getFragment());
 
     }
 
@@ -57,7 +69,6 @@ public class LacSombre extends Zone {
                 getJeu().afficher("Il semble satisfait et vous laisse fouiller le lac.");
 
                 trouverFragment();
-                etapeConversation = 2;
                 break;
             case "2":
                 getJeu().afficher("Vous décidez de sacrifier un objet précieux.");
@@ -79,7 +90,16 @@ public class LacSombre extends Zone {
                 break;
             default:
                 getJeu().afficher("Choix invalide. Essayez à nouveau.");
+                return;
         }
+        getJeu().afficher("");
+        getJeu().afficher("Vous devez maintenant quitter le lac.");
+        getJeu().afficher("Vous pouvez soit : ");
+        getJeu().afficher("     1) Accéder à la forêt maudite en longeant la berge.");
+        getJeu().afficher("     2) Grimper vers les Montagnes Escarpées par un sentier abrupt.");
+        getJeu().afficher("Taper 1 ou 2 pour choisir.");
+        etapeConversation = 2;
+
     }
 
     private void choixSacrifice(String commande) {
@@ -97,6 +117,21 @@ public class LacSombre extends Zone {
         getJeu().retirerFragment(fragment);
 
         trouverFragment();
-        etapeConversation = 2;
+    }
+
+    private void choixSortie(String commande) {
+        switch (commande) {
+            case "1":
+                getJeu().afficher("Vous longez la berge et accédez à la forêt maudite.");
+                getJeu().entrerZone(ForetMaudite.class);
+                break;
+            case "2":
+                getJeu().afficher("Vous grimpez vers les Montagnes Escarpées.");
+                getJeu().entrerZone(MontagnesEscarpees.class);
+                break;
+            default:
+                getJeu().afficher("Choix invalide. Essayez à nouveau.");
+                return;
+        }
     }
 }
