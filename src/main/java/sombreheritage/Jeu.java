@@ -31,7 +31,7 @@ public class Jeu {
         gui.setJeu(this);
         gui.afficher();
 
-        this.entrerZone(getZone(GrotteSouterraine.class));
+        this.entrerZone(getZone(LacSombre.class));
     }
 
     public void traiterCommande(String entree) {
@@ -52,6 +52,10 @@ public class Jeu {
 
     }
 
+    public List<Fragment> getFragments() {
+        return fragments;
+    }
+
     public boolean possedeFragment(Fragment fragment) {
         return fragments.contains(fragment);
     }
@@ -59,6 +63,10 @@ public class Jeu {
     public void ajouterFragment(Fragment fragment) {
         if (fragment == null) return;
         fragments.add(fragment);
+    }
+    public void retirerFragment(Fragment fragment) {
+        if (fragment == null) return;
+        fragments.remove(fragment);
     }
 
     public void entrerZone(Zone zone) {
