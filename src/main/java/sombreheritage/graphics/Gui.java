@@ -30,6 +30,11 @@ public class Gui implements ActionListener {
         afficher("\n");
     }
 
+    public void viderTexte() {
+        texte.setText("");
+        texte.setCaretPosition(texte.getDocument().getLength());
+    }
+
     public void afficheImage(String cheminImage) {
         URL imageURL = this.getClass().getClassLoader().getResource(cheminImage);
         if (imageURL != null) {
@@ -60,10 +65,9 @@ public class Gui implements ActionListener {
         image = new JLabel();
 
         panel.setLayout(new BorderLayout());
-        panel.add(image, BorderLayout.EAST);
+        panel.add(image, BorderLayout.NORTH);
         panel.add(listScroller, BorderLayout.CENTER);
         panel.add(entree, BorderLayout.SOUTH);
-
         fenetre.getContentPane().add(panel, BorderLayout.CENTER);
 
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

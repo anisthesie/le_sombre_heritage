@@ -31,7 +31,7 @@ public class Jeu {
         gui.setJeu(this);
         gui.afficher();
 
-        this.entrerZone(getZone(ClairiereEnchantee.class));
+        this.entrerZone(getZone(GrotteSouterraine.class));
     }
 
     public void traiterCommande(String entree) {
