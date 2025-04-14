@@ -15,7 +15,7 @@ public class GrotteSouterraine extends Zone {
 
     @Override
     public void entrer() {
-
+        etapeConversation = 0;
         if (!dejaVisite()) {
             getJeu().afficher("Vous reprenez conscience dans un boyau rocheux, suintant d’humidité.");
             getJeu().afficher("De faibles gouttes tombent du plafond, et une lueur vacillante provient d’un minuscule interstice dans la paroi.");

@@ -17,7 +17,7 @@ public class ZonePlantesCarnivores extends Zone {
 
     @Override
     public void entrer() {
-
+        etapeConversation = 0;
         if (!dejaVisite()) {
             getJeu().afficher("Vous venez de pénétrer une zone marécageuse, où de gigantesques plantes se meuvent comme des prédateurs à l’affût.");
             getJeu().afficher("Le sol spongieux dégage une odeur de putréfaction.");

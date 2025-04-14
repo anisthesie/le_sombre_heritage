@@ -15,6 +15,8 @@ public class ClairiereEnchantee extends Zone {
 
     @Override
     public void entrer() {
+
+        etapeConversation = 0;
         if (!dejaVisite()) {
             getJeu().afficher("Après la pénombre, vous débouchez sur une clairière d’une beauté surnaturelle.");
             getJeu().afficher("L’herbe scintille sous la lumière d’un soleil doux, une fontaine d’eau cristalline trône au centre, et une brise parfumée caresse les feuillages.");
