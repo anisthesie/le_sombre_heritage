@@ -22,6 +22,14 @@ public class Jeu {
     }
 
     public Jeu(Gui gui) {
+        this(GrotteSouterraine.class, gui);
+    }
+
+    public <T extends Zone> Jeu(Class<T> zoneDepart) {
+        this(zoneDepart, new Gui());
+    }
+
+    public <T extends Zone> Jeu(Class<T> zoneDepart, Gui gui){
 
         initialiserZones();
 
@@ -31,7 +39,7 @@ public class Jeu {
         gui.setJeu(this);
         gui.afficher();
 
-        this.entrerZone(getZone(MaisonAbandonne.class));
+        this.entrerZone(getZone(zoneDepart));
     }
 
     public void traiterCommande(String entree) {
