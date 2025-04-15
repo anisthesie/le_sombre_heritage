@@ -31,7 +31,7 @@ public class Jeu {
         gui.setJeu(this);
         gui.afficher();
 
-        this.entrerZone(getZone(LacSombre.class));
+        this.entrerZone(getZone(MaisonAbandonne.class));
     }
 
     public void traiterCommande(String entree) {
@@ -84,6 +84,10 @@ public class Jeu {
 
     public Zone getZoneCourante() {
         return zoneCourante;
+    }
+
+    public void viderTexte(){
+        gui.viderTexte();
     }
 
     public void afficher(String message) {
