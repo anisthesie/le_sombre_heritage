@@ -89,18 +89,17 @@ public class GrotteSouterraine extends Zone {
     private void choixVoix(String commande) {
         switch (commande) {
             case "1":
-                if (getFragment() != null) {
-                    getJeu().afficher("Vous avez choisi d'avouer que vous avez oublié votre nom.");
-                    getJeu().afficher("La voix murmure : 'Suit-moi, j'ai quelque chose à te montrer.'");
-                    getJeu().afficher("En fouillant un renfoncement derrière un rocher, vous découvrez un pendentif brisé, orné d’un symbole incomplet : une sorte de glyphe évoquant un arbre stylisé.");
-                    getJeu().afficher("Au contact du pendentif, un bref éclair vous submerge : l’image d’un nourrisson confié à une silhouette encapuchonnée, dans cette grotte même.");
-                    getJeu().afficher("Vous ne savez pas qui est ce nourrisson, ni cette silhouette.");
-                    getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
-                    getJeu().afficher("");
+                getJeu().afficher("Vous avez choisi d'avouer que vous avez oublié votre nom.");
+                getJeu().afficher("La voix murmure : 'Suit-moi, j'ai quelque chose à te montrer.'");
+                getJeu().afficher("En fouillant un renfoncement derrière un rocher, vous découvrez un pendentif brisé, orné d’un symbole incomplet : une sorte de glyphe évoquant un arbre stylisé.");
+                getJeu().afficher("Au contact du pendentif, un bref éclair vous submerge : l’image d’un nourrisson confié à une silhouette encapuchonnée, dans cette grotte même.");
+                getJeu().afficher("Vous ne savez pas qui est ce nourrisson, ni cette silhouette.");
+                getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
+                getJeu().afficher("");
 
-                    removeFragment();
-                    getJeu().ajouterFragment(getFragment());
-                }
+                removeFragment();
+                getJeu().ajouterFragment(getFragment());
+                break;
             case "2":
                 getJeu().afficher("Vous avez choisi d'ignorer la voix.");
                 getJeu().afficher("");

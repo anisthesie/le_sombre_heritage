@@ -4,6 +4,7 @@ import sombreheritage.graphics.Gui;
 import sombreheritage.monde.Fragment;
 import sombreheritage.monde.Zone;
 import sombreheritage.monde.zones.*;
+import sombreheritage.sauvegarde.GestionnaireSauvegardes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 public class Jeu {
 
     private Gui gui;
+    private Zone zoneDepart;
 
     private Zone zoneCourante;
     private Zone[] zones;
@@ -29,7 +31,7 @@ public class Jeu {
         this(zoneDepart, new Gui());
     }
 
-    public <T extends Zone> Jeu(Class<T> zoneDepart, Gui gui){
+    public <T extends Zone> Jeu(Class<T> zoneDepart, Gui gui) {
 
         initialiserZones();
 
@@ -39,10 +41,21 @@ public class Jeu {
         gui.setJeu(this);
         gui.afficher();
 
-        this.entrerZone(getZone(zoneDepart));
+        this.zoneDepart = getZone(zoneDepart);
+    }
+
+    public void commencer() {
+        entrerZone(zoneDepart);
     }
 
     public void traiterCommande(String entree) {
+        if (entree.equalsIgnoreCase("save")) {
+            String fichier = GestionnaireSauvegardes.sauvegarder(this);
+            afficher("");
+            afficher("Sauvegarde effectuée dans : " + fichier);
+            afficher("");
+            return;
+        }
         if (zoneCourante != null) zoneCourante.traiterCommande(entree);
     }
 
@@ -72,6 +85,7 @@ public class Jeu {
         if (fragment == null) return;
         fragments.add(fragment);
     }
+
     public void retirerFragment(Fragment fragment) {
         if (fragment == null) return;
         fragments.remove(fragment);
@@ -80,6 +94,7 @@ public class Jeu {
     public void entrerZone(Zone zone) {
         if (zone == null || zone == this.zoneCourante) return;
 
+        gui.viderTexte();
         setZoneCourante(zone);
         zone.entrer();
         gui.afficheImage(zone.getCheminImage());
@@ -89,13 +104,13 @@ public class Jeu {
         entrerZone(getZone(zone));
     }
 
+    public void setZoneDepart(Zone zone) {
+        if (zone == null) return;
+        this.zoneDepart = zone;
+    }
 
     public Zone getZoneCourante() {
         return zoneCourante;
-    }
-
-    public void viderTexte(){
-        gui.viderTexte();
     }
 
     public void afficher(String message) {
@@ -108,6 +123,15 @@ public class Jeu {
 
     public Zone[] getZones() {
         return zones;
+    }
+
+    public <T extends Zone> T getZone(String nom) {
+        for (Zone zone : zones) {
+            if (zone.getClass().getSimpleName().equalsIgnoreCase(nom))
+                return (T) zone;
+
+        }
+        return null;
     }
 
     public <T extends Zone> T getZone(Class<T> type) {

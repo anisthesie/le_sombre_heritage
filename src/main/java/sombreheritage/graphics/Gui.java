@@ -1,6 +1,7 @@
 package sombreheritage.graphics;
 
 import sombreheritage.Jeu;
+import sombreheritage.sauvegarde.GestionnaireSauvegardes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +13,9 @@ public class Gui implements ActionListener {
 
     private Jeu jeu;
 
+    private boolean partieEnCours = false;
+    private int etapeConversation = 0;
+
     private JFrame fenetre;
     private JTextField entree;
     private JTextArea texte;
@@ -19,6 +23,7 @@ public class Gui implements ActionListener {
 
     public Gui() {
         creerGUI();
+        afficherLogo();
     }
 
     public void afficher(String s) {
@@ -43,10 +48,8 @@ public class Gui implements ActionListener {
         }
     }
 
-    public void enable(boolean ok) {
-        entree.setEditable(ok);
-        if (!ok)
-            entree.getCaret().setBlinkRate(0);
+    public void afficherLogo() {
+        afficheImage("images/sombre_heritage.jpg");
     }
 
     private void creerGUI() {
@@ -95,7 +98,50 @@ public class Gui implements ActionListener {
     private void executerCommande() {
         String commandeLue = entree.getText();
         entree.setText("");
+        if (!partieEnCours) {
+            traiterLancement(commandeLue);
+            return;
+        }
         if (jeu != null)
             jeu.traiterCommande(commandeLue);
+    }
+
+    private void traiterLancement(String commande) {
+        switch (etapeConversation) {
+            case 0:
+                traiterPartie(commande);
+                break;
+            case 1:
+                traiterSauvegarde(commande);
+                break;
+        }
+    }
+
+    private void traiterPartie(String commande) {
+        switch (commande) {
+            case "1":
+                this.jeu = new Jeu(this);
+                this.jeu.commencer();
+                partieEnCours = true;
+                break;
+            case "2":
+                afficher("Veuillez entrer le nom de la sauvegarde à charger : ");
+                etapeConversation = 1;
+                break;
+            default:
+                afficher("Commande non reconnue. Veuillez entrer 1 ou 2.");
+                break;
+        }
+
+    }
+
+    private void traiterSauvegarde(String commande) {
+            this.jeu = GestionnaireSauvegardes.depuisSauvegarde(commande, this);
+            if (this.jeu != null) {
+                this.jeu.commencer();
+                partieEnCours = true;
+            } else {
+                afficher("Erreur lors du chargement de la sauvegarde.");
+            }
     }
 }
