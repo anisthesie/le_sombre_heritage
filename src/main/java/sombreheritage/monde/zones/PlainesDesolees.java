@@ -56,46 +56,67 @@ public class PlainesDesolees extends Zone {
         switch (commande) {
             case "1":
                 getJeu().afficher("Vous êtes entrain de sacrifier tous vos fragments pour libérer la forêt.");
-                if (getJeu().getFragments().size() >= 7) {
-                    if (!getJeu().possedeFragment(Fragment.SCIENCE_SORCELLERIE)) {
+                if (!getJeu().possedeFragment(Fragment.SCIENCE_SORCELLERIE)) {
+                    if (getJeu().getFragments().size() >= 7) {
                         finLiberation();
                         break;
                     } else {
-                        getJeu().afficher("Vous avez précédemment choisi de garder le Journal ésotérique, ce qui empêche la guérison complète de la forêt.");
-                        finBloque();
+                        getJeu().afficher("Malgré vos efforts, la forêt ne peut être complètement guérie, car vous n'avez pas trouvé tous les fragments de mémoire.");
+                        finUnification();
                         break;
                     }
                 }
-                getJeu().afficher("Malgré vos efforts, la forêt ne peut être complètement guérie, car vous n'avez pas trouvé tous les fragments de mémoire.");
-                finUnification();
+
+                getJeu().afficher("Vous avez précédemment choisi de garder le Journal ésotérique, ce qui empêche la guérison complète de la forêt.");
+                finBloque();
                 break;
             case "2":
                 getJeu().afficher("Vous décidez de garder les fragments de mémoire et essayez de devenir un Gardien éternel.");
-                if(getJeu().getFragments().size() >= 8) {
+                if (getJeu().getFragments().size() >= 8) {
                     finAscension();
                     break;
                 }
                 getJeu().afficher("Pour devenir un Gardien éternel, vous devez rassembler tous les fragments de mémoire.");
-                getJeu().afficher("Vous n'avez pas trouvé tous les fragments de mémoire, vous ne pouvez pas devenir un Gardien éternel.");
+                getJeu().afficher("Vous n'avez pas trouvé tous les fragments lors de votre voyage, vous ne pouvez pas devenir un Gardien éternel.");
                 getJeu().afficher("Votre soif de pouvoir vous a aveuglé, et vous avez perdu la chance de sauver la forêt.");
                 finBloque();
                 break;
         }
+        getJeu().afficher("");
         etapeConversation = 1;
     }
 
     private void finBloque() {
-
+        getJeu().afficher("La statue se fige, son œil de pierre se refermant lentement.");
+        getJeu().afficher("La forêt demeure dans l'ombre, ses couleurs ternies par la malédiction.");
+        getJeu().afficher("Vous n'avez pas réussi à libérer la forêt, et vous êtes désormais piégé dans ce lieu désolé.");
+        getJeu().afficher("La statue, témoin silencieux de votre échec, vous observe avec une tristesse infinie.");
+        getJeu().afficher("Il ne vous reste plus qu'à errer dans ces plaines désolées, hanté par vos choix.");
+        getJeu().afficher("Vous venez de débloquer le fragment : " + getFragment().getNom());
     }
 
     private void finLiberation() {
-
+        getJeu().afficher("La forêt reprend vie, ses couleurs éclatantes illuminant le paysage.");
+        getJeu().afficher("Les souvenirs de votre voyage s'estompent, mais la paix intérieure vous envahit.");
+        getJeu().afficher("Vous avez choisi de libérer la forêt, et en retour, elle vous a libéré de votre fardeau.");
+        getJeu().afficher("Vous êtes désormais un Gardien de la forêt, un protecteur éternel.");
+        getJeu().afficher("Vous venez de débloquer le fragment : " + getFragment().getNom());
     }
 
     private void finUnification() {
-
+        getJeu().afficher("La forêt s'épanouit, mais une partie de vous reste à jamais liée à elle.");
+        getJeu().afficher("Vous êtes désormais un Gardien de la forêt, mais votre quête n'est pas encore terminée.");
+        getJeu().afficher("Vous avez choisi de préserver vos souvenirs et vous fusionnez avec l’âme sylvestre.");
+        getJeu().afficher("La forêt n’est ni totalement guérie ni perdue : elle demeure un lieu mystique, sous votre gouverne éternelle.");
+        getJeu().afficher("L’aventurier que vous étiez disparaît, un Gardien naît, aux yeux brillants, veillant sur la forêt à jamais.");
+        getJeu().afficher("Vous venez de débloquer le fragment : " + getFragment().getNom());
     }
 
     private void finAscension() {
+        getJeu().afficher("Vous détruisez la statue, aspirant l’essence maléfique, devenant un être imprégné de puissance.");
+        getJeu().afficher("La forêt ne guérit pas, mais se plie à votre volonté.");
+        getJeu().afficher("Vous régnez désormais sur la région, la malédiction devenant votre outil, imposant une terreur ou un ordre absolu.");
+        getJeu().afficher("Vous êtes devenu un Gardien éternel, mais à quel prix ?");
+        getJeu().afficher("Vous venez de débloquer le fragment : " + getFragment().getNom());
     }
 }

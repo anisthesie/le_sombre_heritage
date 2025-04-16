@@ -1,10 +1,10 @@
 import sombreheritage.Jeu;
-import sombreheritage.monde.zones.MaisonAbandonne;
+import sombreheritage.monde.zones.GrotteSouterraine;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Jeu jeu = new Jeu(MaisonAbandonne.class);
+        Jeu jeu = new Jeu(GrotteSouterraine.class);
     }
 
 }
