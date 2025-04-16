@@ -56,7 +56,6 @@ public class CimetiereAbandonne extends Zone {
                     getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
                     getJeu().afficher("");
 
-                    removeFragment();
                     getJeu().ajouterFragment(getFragment());
                     break;
             case "2":

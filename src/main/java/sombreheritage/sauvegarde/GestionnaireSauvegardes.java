@@ -54,7 +54,6 @@ public class GestionnaireSauvegardes {
         }
         Jeu jeu = new Jeu(gui);
         Zone zoneCourante = null;
-        List<Fragment> fragments = new ArrayList<>();
 
         Scanner scanner = null;
 
@@ -75,7 +74,7 @@ public class GestionnaireSauvegardes {
                 String[] fragmentsStr = ligne.substring("Fragments=".length()).split(",");
                 for (String fragmentStr : fragmentsStr) {
                     Fragment fragment = Fragment.valueOf(fragmentStr.trim());
-                    fragments.add(fragment);
+                    jeu.ajouterFragment(fragment);
                 }
             }
         }

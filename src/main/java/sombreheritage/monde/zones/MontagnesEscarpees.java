@@ -110,8 +110,6 @@ public class MontagnesEscarpees extends Zone {
                     getJeu().afficher("L’effleurer fait resurgir la scène où vous (ou votre ancêtre) avez gravé ce sceau pour sceller l’engagement du Gardien ou sceller votre propre âme.");
                     getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
 
-
-                    removeFragment();
                     getJeu().ajouterFragment(getFragment());
                 } else {
                     getJeu().afficher("Vous essayez de prouver votre sagesse et votre bienveillance.");

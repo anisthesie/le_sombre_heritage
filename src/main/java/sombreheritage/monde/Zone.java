@@ -39,14 +39,6 @@ public abstract class Zone {
         return dejaVisite;
     }
 
-    public void removeFragment() {
-        this.fragment = null;
-    }
-
-    public boolean hasFragment() {
-        return fragment != null;
-    }
-
     public Fragment getFragment() {
         return fragment;
     }

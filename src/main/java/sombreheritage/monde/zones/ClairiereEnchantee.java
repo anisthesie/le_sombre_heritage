@@ -98,7 +98,6 @@ public class ClairiereEnchantee extends Zone {
                     getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
                     getJeu().afficher("");
 
-                    removeFragment();
                     getJeu().ajouterFragment(getFragment());
                 } else {
                     getJeu().afficher("Vous buvez l'eau de la fontaine.");

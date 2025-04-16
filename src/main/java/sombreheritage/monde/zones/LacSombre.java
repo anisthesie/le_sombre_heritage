@@ -57,7 +57,6 @@ public class LacSombre extends Zone {
         getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
         getJeu().afficher("");
 
-        removeFragment();
         getJeu().ajouterFragment(getFragment());
 
     }

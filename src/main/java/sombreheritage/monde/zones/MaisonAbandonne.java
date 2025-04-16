@@ -81,8 +81,6 @@ public class MaisonAbandonne extends Zone {
                     getJeu().afficher("     2) Conserver le journal : Vous gagnez l’option de rituels puissants pour \"Ascension\" ou \"Unification\".");
                     getJeu().afficher("Tapez 1 ou 2 pour choisir.");
                     getJeu().afficher("");
-                    removeFragment();
-
 
                     etapeConversation = 1;
                     return;

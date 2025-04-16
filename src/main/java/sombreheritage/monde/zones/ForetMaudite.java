@@ -110,7 +110,7 @@ public class ForetMaudite extends Zone {
         getJeu().afficher("Mais cet esprit enchaîné s’est nourri de rancune, gangrenant la nature.");
         getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
         getJeu().afficher("");
-        removeFragment();
+
         getJeu().ajouterFragment(getFragment());
 
         getJeu().afficher("Vous vous mettez désormais à la recherche d'un moyen de quitter cette forêt.");

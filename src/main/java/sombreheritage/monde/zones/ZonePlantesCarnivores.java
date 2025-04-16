@@ -95,7 +95,7 @@ public class ZonePlantesCarnivores extends Zone {
         getJeu().afficher("Ironiquement, c’est aujourd’hui cette végétation qui menace tout être vivant.");
         getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
         getJeu().afficher("");
-        removeFragment();
+
         getJeu().ajouterFragment(getFragment());
 
         getJeu().afficher("Au bout de la zone, se trouvent deux chemins : ");

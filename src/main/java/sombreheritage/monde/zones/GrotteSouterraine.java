@@ -35,6 +35,7 @@ public class GrotteSouterraine extends Zone {
 
     @Override
     public void traiterCommande(String commande) {
+        System.out.println(getFragment());
         switch (etapeConversation) {
             case 0:
                 choixExploration(commande);
@@ -97,7 +98,6 @@ public class GrotteSouterraine extends Zone {
                 getJeu().afficher("Vous avez acquis le fragment : " + getFragment().getNom() + ".");
                 getJeu().afficher("");
 
-                removeFragment();
                 getJeu().ajouterFragment(getFragment());
                 break;
             case "2":
