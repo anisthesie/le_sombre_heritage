@@ -4,9 +4,11 @@ import sombreheritage.Jeu;
 import sombreheritage.sauvegarde.GestionnaireSauvegardes;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.net.URL;
 
 public class Gui implements ActionListener {
@@ -14,7 +16,6 @@ public class Gui implements ActionListener {
     private Jeu jeu;
 
     private boolean partieEnCours = false;
-    private int etapeConversation = 0;
 
     private JFrame fenetre;
     private JTextField entree;
@@ -107,17 +108,6 @@ public class Gui implements ActionListener {
     }
 
     private void traiterLancement(String commande) {
-        switch (etapeConversation) {
-            case 0:
-                traiterPartie(commande);
-                break;
-            case 1:
-                traiterSauvegarde(commande);
-                break;
-        }
-    }
-
-    private void traiterPartie(String commande) {
         switch (commande) {
             case "1":
                 this.jeu = new Jeu(this);
@@ -125,23 +115,30 @@ public class Gui implements ActionListener {
                 partieEnCours = true;
                 break;
             case "2":
-                afficher("Veuillez entrer le nom de la sauvegarde à charger : ");
-                etapeConversation = 1;
-                break;
-            default:
-                afficher("Commande non reconnue. Veuillez entrer 1 ou 2.");
+                this.jeu = GestionnaireSauvegardes.depuisSauvegarde(this);
+                if (this.jeu != null) {
+                    this.jeu.commencer();
+                    partieEnCours = true;
+                } else {
+                    afficher("Erreur lors du chargement de la sauvegarde.");
+                }
                 break;
         }
-
     }
 
-    private void traiterSauvegarde(String commande) {
-            this.jeu = GestionnaireSauvegardes.depuisSauvegarde(commande, this);
-            if (this.jeu != null) {
-                this.jeu.commencer();
-                partieEnCours = true;
-            } else {
-                afficher("Erreur lors du chargement de la sauvegarde.");
-            }
+    public File getFile() {
+        JFileChooser fileChooser = new JFileChooser();
+
+        fileChooser.setCurrentDirectory(new File("."));
+        fileChooser.setDialogTitle("Sélectionner une sauvegarde");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Fichiers de sauvegarde", "sauvegarde"));
+
+        int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue != JFileChooser.APPROVE_OPTION)
+            return null;
+        return fileChooser.getSelectedFile();
+
     }
 }

@@ -117,6 +117,10 @@ public class Jeu {
         gui.afficher(message);
     }
 
+    public void viderTexte() {
+        gui.viderTexte();
+    }
+
     public void setZoneCourante(Zone zoneCourante) {
         this.zoneCourante = zoneCourante;
     }
