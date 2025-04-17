@@ -55,6 +55,7 @@ public class GrotteSouterraine extends Zone {
                 if (explored)
                     getJeu().afficher("Vous avez déjà exploré la grotte.");
                 else {
+                    getJeu().viderTexte();
                     getJeu().afficher("Vous avez choisi d'explorer la grotte.");
                     getJeu().afficher("");
                     getJeu().afficher("En explorant la grotte, entendez un écho fantomatique.");
@@ -70,6 +71,7 @@ public class GrotteSouterraine extends Zone {
                 }
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous avez choisi de fuir la grotte.");
                 getJeu().afficher("Vous continuez votre chemin, cherchant une issue pour quitter la grotte.");
                 getJeu().afficher("Des murmures résonnent autour de vous, mais vous ne les comprenez pas.");
@@ -77,7 +79,6 @@ public class GrotteSouterraine extends Zone {
                 getJeu().afficher("     1) Suivre les murmures.");
                 getJeu().afficher("     2) Ignorer les murmures et continuer l'exploration.");
                 getJeu().afficher("Taper le numero de la commande souhaitée. (1 ou 2) : ");
-                getJeu().afficher("");
                 getJeu().afficher("");
                 etapeConversation = 2;
                 break;
@@ -90,6 +91,7 @@ public class GrotteSouterraine extends Zone {
     private void choixVoix(String commande) {
         switch (commande) {
             case "1":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous avez choisi d'avouer que vous avez oublié votre nom.");
                 getJeu().afficher("La voix murmure : 'Suit-moi, j'ai quelque chose à te montrer.'");
                 getJeu().afficher("En fouillant un renfoncement derrière un rocher, vous découvrez un pendentif brisé, orné d’un symbole incomplet : une sorte de glyphe évoquant un arbre stylisé.");
@@ -101,6 +103,7 @@ public class GrotteSouterraine extends Zone {
                 getJeu().ajouterFragment(getFragment());
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous avez choisi d'ignorer la voix.");
                 getJeu().afficher("");
                 break;
@@ -122,12 +125,14 @@ public class GrotteSouterraine extends Zone {
     private void choixMurmures(String commande) {
         switch (commande) {
             case "1":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous avez choisi de suivre les murmures.");
                 getJeu().afficher("Les murmures deviennent plus forts, vous guidant vers une sortie.");
                 getJeu().afficher("");
                 getJeu().entrerZone(ZonePlantesCarnivores.class);
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous avez choisi d'ignorer les murmures et de continuer l'exploration.");
                 getJeu().afficher("Les murmures s'estompent lentement, laissant place au silence.");
                 getJeu().afficher("Vous retrouvez la sortie principale.");

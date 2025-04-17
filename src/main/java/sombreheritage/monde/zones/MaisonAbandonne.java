@@ -22,9 +22,11 @@ public class MaisonAbandonne extends Zone {
             getJeu().afficher("Un laboratoire au sous-sol recèle des fioles brisées, d’étranges instruments.");
             getJeu().afficher("On devine qu’une recherche malsaine ou interdite s’y est déroulée.");
         }
+        getJeu().afficher("");
         getJeu().afficher("La maison est structurée en plusieurs pièces ainsi qu'une cave.");
         getJeu().afficher("Les pièces ont l'air calmes et silencieuses.");
         getJeu().afficher("La cave est particulièrement effrayante, mais peut contenir des trésors.");
+        getJeu().afficher("");
         getJeu().afficher("Vos choix sont :");
         getJeu().afficher("     1) Explorer les pièces de la maison");
         getJeu().afficher("     2. Explorer la cave");
@@ -52,18 +54,20 @@ public class MaisonAbandonne extends Zone {
     private void choixExploration(String commande) {
         switch (commande) {
             case "1":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous explorez la maison.");
                 if (!trouveFormule) {
                     getJeu().afficher("Vous trouvez un livre ancien sur la sorcellerie.");
                     getJeu().afficher("Vous apprenez une formule secrète !");
                     getJeu().afficher("Elle pourrait vous être utile par la suite.");
-                    getJeu().afficher("");
                     trouveFormule = true;
                 } else getJeu().afficher("Vous avez déjà trouvé la formule secrète. Il n'y a rien de nouveau ici.");
                 getJeu().afficher("");
                 getJeu().afficher("Vous entendez un bruit venant de la cave.");
+                getJeu().afficher("");
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous descendez dans la cave.");
                 getJeu().afficher("Un bruit étrange résonne dans l'obscurité, les meubles sont en levitation.");
                 getJeu().afficher("Vous êtes confronté à un esprit agressif qui hante les lieux.");
@@ -78,7 +82,7 @@ public class MaisonAbandonne extends Zone {
                     getJeu().afficher("Après avoir ramassé le journal, votre moralité est mise à l'épreuve.");
                     getJeu().afficher("Vous devez choisir entre deux options :");
                     getJeu().afficher("     1) Brûler le journal : Vous détruisez la connaissance, allégez le fardeau maléfique qui pèse sur la forêt, facilitant un chemin vers la \"Libération\".");
-                    getJeu().afficher("     2) Conserver le journal : Vous gagnez l’option de rituels puissants pour \"Ascension\" ou \"Unification\".");
+                    getJeu().afficher("     2) Conserver le journal : Vous gagnez l’option de rituels puissants pour 'Ascension' ou 'Unification'.");
                     getJeu().afficher("Tapez 1 ou 2 pour choisir.");
                     getJeu().afficher("");
 
@@ -88,6 +92,7 @@ public class MaisonAbandonne extends Zone {
                 getJeu().afficher("Vous n'avez pas de formule pour apaiser l'esprit.");
                 getJeu().afficher("L'esprit vous attaque ! Vous essayez de contre-attaquer mais l'esprit est bien plus fort.");
                 getJeu().afficher("Vous vous enfuyez et revenez à l'entrée de la maison.");
+                getJeu().afficher("");
                 break;
             default:
                 getJeu().afficher("Choix invalide. Veuillez taper 1 ou 2.");
@@ -104,6 +109,7 @@ public class MaisonAbandonne extends Zone {
     private void choixJournal(String commande){
         switch (commande){
             case "1":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous brûlez le journal.");
                 getJeu().afficher("Le feu consume les pages, libérant une énergie sombre.");
                 getJeu().afficher("Vous sentez un soulagement, comme si un poids avait été levé.");
@@ -111,6 +117,7 @@ public class MaisonAbandonne extends Zone {
                 getJeu().afficher("");
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous conservez le journal.");
                 getJeu().afficher("Il contient des secrets puissants, mais aussi un lourd fardeau.");
                 getJeu().afficher("Vous avez choisi l'\"Ascension\" ou l'\"Unification\".");
@@ -125,7 +132,7 @@ public class MaisonAbandonne extends Zone {
         }
 
         getJeu().afficher("Vous êtes de retour à l'entrée de la maison.");
-        getJeu().afficher("Vous pouvez maintenant quitter la zone, vos choix sont : ");
+        getJeu().afficher("Vous pouvez maintenant quitter la zone, votre seul choix est : ");
         getJeu().afficher("     1) Sortir vers la forêt maudite.");
         etapeConversation = 2;
     }
@@ -138,7 +145,6 @@ public class MaisonAbandonne extends Zone {
                 break;
             default:
                 getJeu().afficher("Choix invalide. Veuillez taper 1 ou 2.");
-                return;
         }
     }
 }

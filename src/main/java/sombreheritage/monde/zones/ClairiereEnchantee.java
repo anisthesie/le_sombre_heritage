@@ -56,18 +56,22 @@ public class ClairiereEnchantee extends Zone {
     private void choixEsprit(String commande) {
         switch (commande) {
             case "1":
-                if(!getJeu().possedeFragment(Fragment.NAISSANCE)) {
-                    getJeu().afficher("Vous n'avez pas le pendentif brisé de la grotte.");
+                if (!getJeu().possedeFragment(Fragment.NAISSANCE)) {
+                    getJeu().afficher("Vous n'avez pas le pendentif brisé de la grotte, vous ne pouvez pas choisir cette option.");
+                    getJeu().afficher("L'esprit vous regarde avec curiosité, mais il ne peut pas vous aider sans le pendentif.");
+                    getJeu().afficher("Votre seul choix est de repousser l'esprit.");
                     getJeu().afficher("");
                     return;
                 }
+                getJeu().viderTexte();
                 getJeu().afficher("Vous montrez le pendentif brisé à l'esprit.");
-                getJeu().afficher("L’Esprit semble heureux, murmure une prière : vous apprenez qu’un rituel est nécessaire.");
+                getJeu().afficher("L’Esprit semble heureux, murmure une prière : vous apprenez un certain rituel.");
                 getJeu().afficher("");
 
                 apprisRituel = true;
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous repoussez l'esprit.");
                 getJeu().afficher("L'esprit s'éloigne, déçu, disparaît dans la brume.");
                 getJeu().afficher("");
@@ -89,6 +93,7 @@ public class ClairiereEnchantee extends Zone {
     private void choixFontaine(String commande) {
         switch (commande) {
             case "1":
+                getJeu().viderTexte();
                 if (apprisRituel) {
                     getJeu().afficher("Avant de boire, vous récitez les paroles du rituel.");
                     getJeu().afficher("Vous buvez l'eau de la fontaine.");
@@ -102,11 +107,13 @@ public class ClairiereEnchantee extends Zone {
                 } else {
                     getJeu().afficher("Vous buvez l'eau de la fontaine.");
                     getJeu().afficher("L’eau est douce et apaisante, mais rien ne se passe sans le récit d'un certain rituel.");
-                    break;
+                    getJeu().afficher("");
                 }
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous décidez de continuer votre chemin.");
+                getJeu().afficher("");
                 break;
             default:
                 getJeu().afficher("Commande invalide. Veuillez entrer 1 ou 2.");

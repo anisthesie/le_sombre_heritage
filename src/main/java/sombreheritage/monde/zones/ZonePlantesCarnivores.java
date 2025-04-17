@@ -29,10 +29,11 @@ public class ZonePlantesCarnivores extends Zone {
         getJeu().afficher("Si vous passez à découvert, elle déploie des lianes strangulates, vous étouffant.");
         getJeu().afficher("Vous devez d'abord trouver de quoi vous défendre.");
         getJeu().afficher("Vous remarquez un campement abandonné, avec des outils de jardinage.");
+        getJeu().afficher("");
         getJeu().afficher("Les choix qui s’offrent à vous sont : ");
         getJeu().afficher("     1) Explorer le campement abandonné.");
         getJeu().afficher("     2) Trouver un animal et l'utiliser comme appât.");
-        getJeu().afficher("     3) Regagner la Claireière.");
+        getJeu().afficher("     3) Regagner la Clairière.");
         getJeu().afficher("Taper le numero de la commande souhaitée. (1 ou 2) : ");
         getJeu().afficher("");
 
@@ -56,6 +57,7 @@ public class ZonePlantesCarnivores extends Zone {
     private void choixMethode(String commande) {
         switch (commande) {
             case "1":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous avez choisi d'explorer le campement abandonné.");
                 getJeu().afficher("En fouillant le campement, vous trouvez des outils de jardinage.");
                 getJeu().afficher("Vous pouvez les utiliser pour vous défendre contre la fleur-œil géante.");
@@ -63,13 +65,15 @@ public class ZonePlantesCarnivores extends Zone {
                 outilsTrouves = true;
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous avez choisi de trouver un animal.");
                 getJeu().afficher("En cherchant dans le marécage, vous trouvez une grenouille que vous utiliserez comme appât.");
                 getJeu().afficher("");
                 animalTrouve = true;
                 break;
             case "3":
-                getJeu().afficher("Vous avez choisi de regagner la Claireière.");
+                getJeu().viderTexte();
+                getJeu().afficher("Vous avez choisi de regagner la Clairière.");
                 getJeu().afficher("Vous quittez la zone des plantes carnivores et retournez à la Claireière.");
                 getJeu().afficher("");
                 getJeu().entrerZone(ClairiereEnchantee.class);
@@ -89,7 +93,7 @@ public class ZonePlantesCarnivores extends Zone {
             getJeu().afficher("La fleur se concentre sur la grenouille, vous permettant de passer sans encombre.");
         }
         getJeu().afficher("");
-        getJeu().afficher("Vous avez réussi à battre la fleur-œil géante et à explorer la zone des plantes carnivores.");
+        getJeu().afficher("Vous avez réussi à vaincre la fleur-œil géante et à explorer la zone des plantes carnivores.");
         getJeu().afficher("Dans le bulbe d’une énorme plante endormie, une racine runique est enfoncée.");
         getJeu().afficher("La prendre réveille un flash : vous ou un ancêtre, luttant contre des créatures végétales pour protéger la forêt d’envahisseurs autrefois.");
         getJeu().afficher("Ironiquement, c’est aujourd’hui cette végétation qui menace tout être vivant.");

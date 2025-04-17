@@ -53,11 +53,13 @@ public class ForetMaudite extends Zone {
     private void choixBrume(String commande) {
         switch (commande) {
             case "1":
-                getJeu().afficher("Vous avancez dans la brume, vous ne savez pas où vous allez.");
+                getJeu().viderTexte();
+                getJeu().afficher("Vous avancez dans la brume aveuglement, vous ne savez pas où vous allez.");
                 getJeu().afficher("Les cris se font de plus en plus forts, vous ne pouvez plus les ignorer.");
                 getJeu().afficher("Vous êtes pris de panique, et vous courez de plus en plus vite.");
                 getJeu().afficher("Après de longues minutes de course, vous vous retrouvez face à un croisement.");
                 getJeu().afficher("Vous ne savez pas où mènent ces chemins, mais c'est votre seule option.");
+                getJeu().afficher("");
                 getJeu().afficher("Vous devez choisir entre deux chemins :");
                 getJeu().afficher("     1) Un chemin rocheux, sombre et étroit.");
                 getJeu().afficher("     2) Un vieux passage rocailleux pris de végétation.");
@@ -66,14 +68,17 @@ public class ForetMaudite extends Zone {
                 etapeConversation = 2;
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("Vous attendez que la brume se dissipe.");
                 getJeu().afficher("Les hallucinations s'estompent peu à peu et vous continuez à avancer.");
                 getJeu().afficher("Un chêne noir particulier attire votre attention, vous décidez de vous en approcher.");
+                getJeu().afficher("");
                 getJeu().afficher("Vous êtes soudainement confronté à un arbre vivant.");
                 getJeu().afficher("Il vous regarde avec des yeux vides, puis vous attrape avec ses branches et commence à vous étrangler.");
                 getJeu().afficher("Après un moment de silence, l'arbre se met à parler : ");
-                getJeu().afficher("     « Je suis l'arbre de l'honneteté, je suis ici pour te juger. »");
+                getJeu().afficher("     « Je suis l'arbre de l'honnêteté, je suis ici pour te juger. »");
                 getJeu().afficher("     « Qu'as-tu fait du Journal ésotérique ? »");
+                getJeu().afficher("");
                 getJeu().afficher("Vos réponses possibles sont :");
                 getJeu().afficher("     1) Je l'ai brûlé.");
                 getJeu().afficher("     2) Je l'ai gardé.");
@@ -90,16 +95,20 @@ public class ForetMaudite extends Zone {
     private void choixJournal(String commande) {
         switch (commande) {
             case "1":
+                getJeu().viderTexte();
                 getJeu().afficher("     « Quel honnête homme ! » s'écrie l'arbre en relâchant son étreinte.");
                 getJeu().afficher("     « Ce journal était longtemps la source de tous nos problèmes, vous êtes le bienvenu ici. » ");
                 getJeu().afficher("     « Vous trouverez derrière moi un chêne noir, je pense qu'il vous intéressera. »");
                 getJeu().afficher("L'arbre vous relâche et vous inspectez derrière lui.");
+                getJeu().afficher("");
                 break;
             case "2":
+                getJeu().viderTexte();
                 getJeu().afficher("     « DIABLE ! » s'écrie l'arbre en vous balançant au sol.");
                 getJeu().afficher("     « Ce journal est la source de la corruption, il est maudit. »");
                 getJeu().afficher("     « Quand tu bruleras ce journal, alors tu seras le bienvenu ici. » s'enfuit l'arbre d'une voix effrayée.");
                 getJeu().afficher("L'arbre s'enfuit dans la forêt, vous inspectez derrière lui le chêne qui attire votre attention.");
+                getJeu().afficher("");
                 break;
             default:
                 getJeu().afficher("Choix invalide. Veuillez entrer 1 ou 2.");

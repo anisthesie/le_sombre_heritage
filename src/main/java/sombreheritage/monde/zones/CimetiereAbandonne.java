@@ -48,6 +48,7 @@ public class CimetiereAbandonne extends Zone {
     private void choixFantome(String commande) {
         switch (commande) {
                 case "1":
+                    getJeu().viderTexte();
                     getJeu().afficher("Vous tentez de convaincre le fantôme de vos bonnes intentions.");
                     getJeu().afficher("Le fantôme semble hésiter, mais il finit par vous faire confiance et vous laisse passer.");
                     getJeu().afficher("Au fond du cimetière, votre regard est attiré par une lumière étrange.");
@@ -59,6 +60,7 @@ public class CimetiereAbandonne extends Zone {
                     getJeu().ajouterFragment(getFragment());
                     break;
             case "2":
+                getJeu().viderTexte();
                     getJeu().afficher("Vous décidez d'affronter le fantôme.");
                     getJeu().afficher("Le combat est intense, mais le fantôme est d'une puissance incroyable.");
                     getJeu().afficher("Vous réalisez que vous ne pouvez pas le vaincre.");
