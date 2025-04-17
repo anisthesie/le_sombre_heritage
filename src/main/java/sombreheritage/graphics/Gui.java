@@ -11,6 +11,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
 
+/**
+ * Classe de l'interface graphique du jeu.
+ * Elle gère l'affichage des messages et des images, ainsi que la saisie des commandes par l'utilisateur.
+ */
 public class Gui implements ActionListener {
 
     private Jeu jeu;
@@ -49,6 +53,10 @@ public class Gui implements ActionListener {
         }
     }
 
+    /**
+     * Affiche le logo du jeu.
+     * Le logo est une image qui est affichée dans la fenêtre principale du jeu lorsque le jeu démarre.
+     */
     public void afficherLogo() {
         afficheImage("images/sombre_heritage.jpg");
     }
@@ -107,6 +115,12 @@ public class Gui implements ActionListener {
             jeu.traiterCommande(commandeLue);
     }
 
+    /**
+     * Traite la commande avant le lancement du jeu.
+     * L'utilisateur peut choisir de commencer une nouvelle partie ou de charger une partie sauvegardée.
+     *
+     * @param commande La commande saisie par l'utilisateur.
+     */
     private void traiterLancement(String commande) {
         switch (commande) {
             case "1":
@@ -126,6 +140,11 @@ public class Gui implements ActionListener {
         }
     }
 
+    /**
+     * Affiche une boîte de dialogue pour choisir un fichier de sauvegarde.
+     *
+     * @return Le fichier sélectionné par l'utilisateur, ou null si l'utilisateur a annulé.
+     */
     public File getFile() {
         JFileChooser fileChooser = new JFileChooser();
 

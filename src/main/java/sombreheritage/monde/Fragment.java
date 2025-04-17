@@ -1,5 +1,9 @@
 package sombreheritage.monde;
 
+/**
+ * Enumération représentant les fragments de l'histoire.
+ * Chaque fragment a un nom et une description associés.
+ */
 public enum Fragment {
 
     SURVIE_INSTINCT("Survie et instinct", "Racine runique"),
@@ -15,15 +19,31 @@ public enum Fragment {
     private String nom;
     private String description;
 
+    /**
+     * Constructeur de l'énumération Fragment.
+     *
+     * @param nom         Le nom du fragment.
+     * @param description La description du fragment.
+     */
     Fragment(String nom, String description) {
         this.nom = nom;
         this.description = description;
     }
 
+    /**
+     * Retourne le nom du fragment.
+     *
+     * @return Le nom du fragment.
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * Retourne la description du fragment.
+     *
+     * @return La description du fragment.
+     */
     public String getDescription() {
         return description;
     }
