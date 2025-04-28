@@ -125,7 +125,7 @@ public class ForetMaudite extends Zone {
         getJeu().afficher("Vous vous mettez désormais à la recherche d'un moyen de quitter cette forêt.");
         getJeu().afficher("Après de longues minutes de course, vous vous retrouvez face à un croisement.");
         getJeu().afficher("Vous devez choisir entre deux chemins :");
-        getJeu().afficher("     1) Un sentier rocheux sombre et étroit qui mène vers les Montagnes Escarpées.");
+        getJeu().afficher("     1) Un sentier rocheux sombre et étroit qui mène vers le Lac Sombre.");
         getJeu().afficher("     2) Un vieux passage rocailleux pris de végétation menant vers les Plaines Desolées.");
         getJeu().afficher("Taper 1 ou 2 pour choisir.");
         getJeu().afficher("");
@@ -137,7 +137,7 @@ public class ForetMaudite extends Zone {
         switch (commande) {
             case "1":
                 getJeu().afficher("Vous empruntez le sentier rocheux sombre et étroit.");
-                getJeu().entrerZone(MontagnesEscarpees.class);
+                getJeu().entrerZone(LacSombre.class);
                 break;
             case "2":
                 getJeu().afficher("Vous empruntez le vieux passage rocailleux pris de végétation.");
