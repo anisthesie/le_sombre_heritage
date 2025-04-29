@@ -264,4 +264,13 @@ public class Jeu {
         return null;
     }
 
+    /**
+     * Obtenir l'interface graphique du jeu.
+     *
+     * @return L'interface graphique.
+     */
+    public Gui getGui() {
+        return gui;
+    }
+
 }

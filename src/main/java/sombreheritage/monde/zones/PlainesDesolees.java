@@ -88,6 +88,7 @@ public class PlainesDesolees extends Zone {
     }
 
     private void finBloque() {
+        getJeu().getGui().afficheImage( "images/fin/bloque.jpg");
         getJeu().afficher("");
         getJeu().afficher("La statue se fige, son œil de pierre se refermant lentement.");
         getJeu().afficher("La forêt demeure dans l'ombre, ses couleurs ternies par la malédiction.");
@@ -101,6 +102,7 @@ public class PlainesDesolees extends Zone {
     }
 
     private void finLiberation() {
+        getJeu().getGui().afficheImage( "images/fin/liberation.jpg");
         getJeu().afficher("");
         getJeu().afficher("La forêt reprend vie, ses couleurs éclatantes illuminant le paysage.");
         getJeu().afficher("Les souvenirs de votre voyage s'estompent, mais la paix intérieure vous envahit.");
@@ -113,6 +115,8 @@ public class PlainesDesolees extends Zone {
     }
 
     private void finUnification() {
+        getJeu().getGui().afficheImage( "images/fin/unification.jpg");
+
         getJeu().afficher("");
         getJeu().afficher("La forêt s'épanouit, mais une partie de vous reste à jamais liée à elle.");
         getJeu().afficher("Vous êtes désormais un Gardien de la forêt, mais votre quête n'est pas encore terminée.");
@@ -126,6 +130,7 @@ public class PlainesDesolees extends Zone {
     }
 
     private void finAscension() {
+        getJeu().getGui().afficheImage( "images/fin/ascension.jpg");
         getJeu().afficher("");
         getJeu().afficher("Vous détruisez la statue, aspirant l’essence maléfique, devenant un être imprégné de puissance.");
         getJeu().afficher("La forêt ne guérit pas, mais se plie à votre volonté.");

@@ -35,7 +35,6 @@ public class GrotteSouterraine extends Zone {
 
     @Override
     public void traiterCommande(String commande) {
-        System.out.println(getFragment());
         switch (etapeConversation) {
             case 0:
                 choixExploration(commande);
